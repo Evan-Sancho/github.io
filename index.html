@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=>, initial-scale=1.0">
+    <title>Last Forever</title>
+</head>
+<body>
+    <!-- 引用供应商的 SDK -->
+    <script src="https://virtualhuman-app.oss-cn-beijing.aliyuncs.com/interaction/public/js/sdk/release/xiaoiceRTC1.0.6.js" type="text/javascript">
+    </script>
+
+    <!-- 初始化和使用 SDK -->
+    <script>
+    //const Client = new window.RTCInteraction({
+	//mountClass: "mountClass",
+	//signature: "7f825e2d89f2420d97c79bcd30303bbc",
+	//projectId: "c919078c-ad59-11ef-b08d-d16f32474776",
+	//exclusiveVirtualHumanId:"TPA0001",
+	//onError(errorMes) {
+	//	console.log(errorMes);
+	//},
+	//onInited(res) {
+	//	console.log("inited",res);
+	//	Client.startRTC()
+	//},
+	//onPlayStream(v3Orv4) {
+	//	console.log("play");
+	//	console.log("v3Orv4",v3Orv4);
+	//},
+	//onStopStream() {
+	//	console.log("stop");
+    //},
+	//onTalkStart(talkRes) {
+	//	console.log(talkRes);
+    //},
+	//onTalkEnd(talkRes) {
+	//	console.log(talkRes);
+    //}
+    //});
+    </script>
+</body>
+<script>
+    !(function(window){
+    const host="https://aibeings-vip.xiaoice.com",url=host+"/CRTCPreview/c919078c-ad59-11ef-b08d-d16f32474776?sign=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKd1lYbHNiMkZrSWpvaWUxd2lZMjl0Y0dGdWVVbGtYQ0k2WENJellqZGlObUZpT1RsbE9XTTBOVFl4T0daa016RTFaVEkzTkRReFptRTJPVndpTEZ3aWFXUmxiblJwWm1sallYUnBiMjVKWkZ3aU9sd2lNak5qTmpnNVpUTXRORE15WXkweE1XVmxMVGcwTXpFdE5tUXpNR0V3TWpVMU56RXdMV2x1ZEdWeVlXTjBhWFpsTFdKaFkydGxibVJjSWl4Y0luUnZhMlZ1U1dSY0lqcGNJbUZqWWprNU1tTTRNalV5WVRReU1ESmlZalptWVRZeU5HTXhaalZtTldaalhDSjlJaXdpYVdGMElqb3hOek15TmprME9UUXlMQ0psZUhBaU9qSTFPVFkyT1RRNU5ESjkuQlpZd2k2RnZSMTRPekduNDRMZkdyUGV5aGlSNW43SFhCQ203bXZYdzlRSQ==&isIFrame=1";
+    const wrapDiv=document.createElement("div");
+    wrapDiv.id="xiaoice-streaming-embed";
+    const container=document.createElement("div");
+    container.id="xiaoice-streaming-container";
+    const stylesheet=document.createElement("style");
+    const clientWidth=document.body.clientWidth;
+    stylesheet.innerHTML=" #xiaoice-streaming-embed { z-index: 9999; position: fixed; inset: 0px; margin: auto; width: 350px; height: 350px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.12); overflow: hidden; } #xiaoice-streaming-embed.horizontal { height: 366px;  width: calc(366px * 16 / 9); border: 0; border-radius: 12px; box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.10); } #xiaoice-streaming-embed.vertical { height: 680px;  width: calc(680px * 9 / 16); border: 0; border-radius: 12px; box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.10); } #xiaoice-streaming-container { width: 100%; height: 100%; } #xiaoice-streaming-container iframe { width: 100%; height: 100%; border: 0; }";
+    const iframe=document.createElement("iframe");
+    (iframe.allowFullscreen=!1);
+    (iframe.title="Streaming Embed");
+    (iframe.role="dialog");
+    (iframe.allow="microphone");
+    (iframe.src=url);
+    window.addEventListener("message",(e)=>{console.log('e.data.action',e.data.action,e.origin);
+    if(e.origin!==host)return;
+    if(e.data.action==='start'){if(e.data.ratio==='horizontal'){wrapDiv.classList.toggle("horizontal",true)}else if(e.data.ratio==='vertical'){wrapDiv.classList.toggle("vertical",true)}}else if(e.data.action==='close'){
+        wrapDiv.classList.toggle("horizontal",false);
+        wrapDiv.classList.toggle("vertical",false)}});
+    container.appendChild(iframe);
+    wrapDiv.appendChild(stylesheet);
+    wrapDiv.appendChild(container);
+    document.body.appendChild(wrapDiv)
+    })(globalThis);   
+</script>
+</html>
